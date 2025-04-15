@@ -1,61 +1,117 @@
-# 📇 Sistema de Gestión de Contactos
+# 📇 Sistema de Gestión de Contactos (Consola)
 
 ## 🧩 Introducción
 
-El **Sistema de Gestión de Contactos** es una aplicación web ligera y eficiente que permite a los usuarios almacenar, visualizar, actualizar y eliminar contactos personales. Diseñada con una interfaz limpia y moderna, esta herramienta es ideal para pequeñas empresas o uso personal. 
-
-Permite gestionar información clave de cada contacto, como:  
-➡️ Nombre  
-➡️ Apellido  
-➡️ Correo electrónico  
-➡️ Teléfono  
+El **Sistema de Gestión de Contactos** es una aplicación de consola que permite gestionar contactos personales. Puedes agregar, buscar, actualizar, eliminar y listar contactos almacenados en una base de datos SQLite.
 
 ---
 
-## ⚙️ Características Principales
+## ⚙️ Funcionalidades
 
-- ✅ **Agregar Contactos**: Ingreso de nuevos contactos a través de un formulario validado.
-- 📄 **Visualizar Contactos**: Listado completo en formato tabla.
-- 🔁 **Actualizar Contactos**: Modificación de datos existentes.
-- ❌ **Eliminar Contactos**: Eliminación directa desde el listado.
-- 🛡️ **Validación de Datos**: Asegura que nombres no contengan números y formatos de email/teléfono sean correctos.
+1. **Agregar Contacto**: Permite registrar un nuevo contacto con nombre, apellido, correo y teléfono.
+2. **Eliminar Contacto**: Elimina un contacto existente utilizando su código único.
+3. **Buscar Contacto**: Busca contactos por nombre o correo electrónico.
+4. **Actualizar Contacto**: Modifica los datos de un contacto existente.
+5. **Mostrar Todos**: Lista todos los contactos almacenados.
+6. **Salir**: Finaliza la aplicación.
 
 ---
 
 ## 🔄 Flujo de Trabajo
 
-1. **Inicio**: Se muestran todos los contactos disponibles en la base de datos.
-2. **Agregar Contacto**: Formulario para crear un nuevo contacto con validaciones.
-3. **Actualizar Contacto**: Edición de datos de un contacto existente.
-4. **Eliminar Contacto**: Opción para eliminar desde el listado principal.
-5. **Mensajes de error**: Se notifican errores de validación de forma clara y amigable.
+1. **Inicio**: Ejecuta el archivo `main.py` para iniciar el programa.
+2. **Menú Principal**: Selecciona una opción del menú para realizar una acción.
+3. **Interacción**: Ingresa los datos solicitados según la opción seleccionada.
+4. **Base de Datos**: Los datos se almacenan y gestionan en un archivo SQLite llamado `contactos.db`.
+
+---
+
+## 🛠️ Archivos del Proyecto
+
+### 1. **`main.py`**
+   - Es el punto de entrada del programa.
+   - Contiene el menú principal y la lógica para interactuar con el usuario.
+   - Llama a los métodos de la clase `Contacto` para realizar las operaciones.
+
+### 2. **`contacto_modelo.py`**
+   - Contiene la clase `Contacto`, que implementa la lógica para interactuar con la base de datos SQLite.
+   - Métodos principales:
+     - `obtener_todos()`: Recupera todos los contactos.
+     - `agregar_contacto(nombre, apellido, correo, telefono)`: Agrega un nuevo contacto.
+     - `eliminar_contacto(codigo)`: Elimina un contacto por su ID.
+     - `actualizar_contacto(codigo, nombre, apellido, correo, telefono)`: Actualiza los datos de un contacto.
+
+### 3. **`crear_db.py`**
+   - Crea la base de datos SQLite (`contactos.db`) y la tabla `contactos` si no existe.
+   - Se ejecuta automáticamente al iniciar el proyecto por primera vez.
 
 ---
 
 ## 🧰 Tecnologías Utilizadas
 
-### 🔙 Backend
-
-- **Python 3**  
-  Lenguaje principal de desarrollo. Fácil de aprender y potente para desarrollo web.
-  
-- **Flask**  
-  Micro-framework ligero usado para manejar rutas, solicitudes HTTP y lógica del negocio.
-
-- **SQLite**  
-  Base de datos integrada, ideal para proyectos pequeños. No necesita servidor adicional.
-
-- **Jinja2**  
-  Motor de plantillas que permite generar HTML dinámico desde Python.
+- **Lenguaje**: Python 3.
+- **Base de Datos**: SQLite.
+- **Paradigma**: Programación Orientada a Objetos (POO).
 
 ---
 
-### 🎨 Frontend
+## 🧩 Uso de POO y Herencia
 
-- **HTML5 & CSS3**  
-  Estructura y estilos básicos de la interfaz.
+### **Programación Orientada a Objetos (POO)**
+El proyecto utiliza POO para organizar el código y separar responsabilidades:
+- **Clase `Contacto`**:
+  - Encapsula toda la lógica relacionada con la gestión de contactos.
+  - Proporciona métodos para interactuar con la base de datos (`agregar_contacto`, `eliminar_contacto`, etc.).
+  - Mejora la reutilización y el mantenimiento del código.
 
-- **Bootstrap 4**  
-  Framework CSS para lograr un diseño moderno y completamente responsivo sin esfuerzo adicional.
+### **Herencia**
+Aunque este proyecto no utiliza herencia directamente, la estructura basada en clases permite extender fácilmente la funcionalidad en el futuro. Por ejemplo:
+- Podrías crear una clase `ContactoVIP` que herede de `Contacto` y agregue funcionalidades específicas, como un campo adicional para notas importantes.
 
+---
+
+## 🚀 Cómo Ejecutar el Proyecto
+
+1. **Clona el repositorio**:
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
+   cd ContactList-Python
+
+   ContactList-Python/
+
+   Instala Python: Asegúrate de tener Python 3 instalado en tu sistema.
+
+Crea la base de datos: Ejecuta el archivo crear_db.py para generar la base de datos:
+
+python crear_db.py
+
+Ejecuta el programa: Inicia la aplicación ejecutando main.py:
+
+python main.py
+
+📂 Estructura del Proyecto
+
+│
+├── [contacto_modelo.py](http://_vscodecontentref_/1)   # Clase para gestionar contactos en la base de datos
+├── [crear_db.py](http://_vscodecontentref_/2)          # Script para crear la base de datos SQLite
+├── [main.py](http://_vscodecontentref_/3)              # Punto de entrada del programa
+└── [contactos.db](http://_vscodecontentref_/4)         # Base de datos SQLite (se genera automáticamente)
+
+📖 Ejemplo de Uso
+Agregar un contacto:
+Selecciona la opción 1 en el menú.
+Ingresa los datos del contacto (nombre, apellido, correo, teléfono).
+Buscar un contacto:
+Selecciona la opción 3.
+Ingresa el nombre o correo del contacto que deseas buscar.
+Actualizar un contacto:
+Selecciona la opción 4.
+Ingresa el código del contacto y los nuevos datos.
+Eliminar un contacto:
+Selecciona la opción 2.
+Ingresa el código del contacto que deseas eliminar.
+📝 Notas
+Asegúrate de ejecutar crear_db.py antes de usar el programa por primera vez.
+Los datos se almacenan en el archivo contactos.db, que se genera automáticamente.
+Este proyecto es modular y puede extenderse fácilmente con nuevas funcionalidades.
 

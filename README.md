@@ -58,12 +58,4 @@ Permite gestionar información clave de cada contacto, como:
 - **Bootstrap 4**  
   Framework CSS para lograr un diseño moderno y completamente responsivo sin esfuerzo adicional.
 
----
 
-## 📦 Requisitos e Instalación
-
-### 1. Clona el repositorio
-
-```bash
-git clone https://github.com/tuusuario/gestion-contactos.git
-cd gestion-contactos
